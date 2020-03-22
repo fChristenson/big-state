@@ -9,7 +9,7 @@ const getUsers = () => {
 
   for (let i = 0; i < numRecords; i++) {
     data.push({
-      id: i.toString(),
+      id: Math.random().toString(),
       name: `User-${i}`
     });
   }
@@ -25,7 +25,7 @@ const getComments = () => {
     const userId = Math.random().toString();
 
     data.push({
-      id: i.toString(),
+      id: Math.random().toString(),
       comment: `Comment-${i}`,
       user: {
         id: userId,
@@ -40,7 +40,7 @@ const getComments = () => {
 
 for (let i = 0; i < numRecords; i++) {
   data.push({
-    id: i.toString(),
+    id: Math.random().toString(),
     name: `Posts-${i}`,
     comments: getComments()
   });

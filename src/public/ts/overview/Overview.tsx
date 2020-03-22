@@ -1,22 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { IPost, IComment } from "../post/Post";
+import { IPost } from "./duck";
 
 interface IProps {
-  data: IPost[];
+  posts: IPost[];
+  totalPosts: number;
+  totalFollowers: number;
+  totalComments: number;
   onLoadMore(): void;
 }
 
-export const Overview: React.FunctionComponent<IProps> = ({ data, onLoadMore }) => {
-  const totalFollowers = data.reduce((acc: number, p: IPost) => acc + p.comments.reduce((acc: number, c: IComment) => c.user.followers.length + acc, 0), 0);
+export const Overview: React.FunctionComponent<IProps> = ({ posts, totalPosts, totalFollowers, totalComments, onLoadMore }) => {
 
   return (
     <div>
-      <div>Total posts: {data.length}</div>
-      <div>Total comments: {data.reduce((num: number, p: IPost) => p.comments.length + num, 0)}</div>
+      <div>Total posts: {totalPosts}</div>
+      <div>Total comments: {totalComments}</div>
       <div>Total followers: {totalFollowers}</div>
       <ul>
-        {data.map((d, i) => (
+        {posts.map((d, i) => (
           <li key={i}>
             <div style={{ padding: '12px' }}>
               <Link style={{ color: 'gold' }} to={d.id}>{d.name}</Link>
