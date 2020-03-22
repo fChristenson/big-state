@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { Post as Component, IPost } from "./Post";
+import { Post as Component } from "./Post";
 import { useParams } from "react-router-dom";
+import { IPost } from "../overview/duck";
 
 export const Post: React.FunctionComponent = () => {
   const { id } = useParams();
